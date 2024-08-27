@@ -1,24 +1,38 @@
 import React from "react";
-import HeaderMain from '../../components/HeaderMain/headerMain'
-import { useForm } from "react-hook-form"
+import HeaderMain from '../../components/HeaderMain/headerMain';
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from 'yup'
-import './postprodutos.css'
+import * as yup from 'yup';
+import './postprodutos.css';
+import axios from "axios";
 
-const validationPost = yup.object().shape({
-    title: yup.string().required('O campo e obrigatorio').max(90, 'O campo precisa ter menos que 90 caracteres'),
-    description: yup.string().required('O campo e obrigatorio').max(200, 'O campo precisa ter menos que 200 caracteres'),
-    content: yup.string().required('O campo e obrigatorio').max(500, 'O campo precisa ter menos que 500 caracteres')
-})
+// Atualize a validação para aceitar um array de URLs
+const validacaoPost = yup.object().shape({
+    title: yup.string().required('Título é obrigatório'),
+    price: yup.number().required('Valor é obrigatório').positive('O valor deve ser positivo'),
+    description: yup.string().required('Descrição é obrigatória'),
+    categoryId: yup.number().required('Categoria é obrigatória').positive('A categoria deve ser positiva'),
+});
 
-function Produtos(){
+function Produtos() {
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(validacaoPost)
+    });
 
-    const {register, handleSubmit, formState: {errors}} = useForm({
-        resolver: yupResolver(validationPost)
-    })
-    const addProduto = data => console.log(data)
+    const addProduto = async (data) => {
+        try {
+            const formattedData = {
+                ...data,
+                images: data.images.split(',').map(url => url.trim())
+            };
+            await axios.post('https://api.escuelajs.co/api/v1/products/', formattedData);
+            console.log('Produto adicionado com sucesso');
+        } catch (error) {
+            console.error('Erro ao adicionar produto', error.response?.data || error.message);
+        }
+    };
 
-    return(
+    return (
         <div>
             <HeaderMain />
 
@@ -29,37 +43,46 @@ function Produtos(){
                     <div className="line-post"></div>
 
                     <div className="card-body-post">
-
                         <form className="form" onSubmit={handleSubmit(addProduto)}>
-
                             <div className="fields">
                                 <label>Titulo</label>
-                                <input type="text" name="title" {...register('title')}/>
+                                <input type="text" name="title" {...register('title')} />
                                 <p className="error-message">{errors.title?.message}</p>
                             </div>
-                            
+
+                            <div className="fields">
+                                <label>Valor</label>
+                                <input type="text" name="price" {...register('price')} />
+                                <p className="error-message">{errors.price?.message}</p>
+                            </div>
+
                             <div className="fields">
                                 <label>Descrição</label>
-                                <input type="text" name="description" {...register('description')}/>
+                                <input type="text" name="description" {...register('description')} />
                                 <p className="error-message">{errors.description?.message}</p>
                             </div>
 
                             <div className="fields">
-                                <label>Conteudo</label>
-                                <textarea type="text" name="content" {...register('content')}/>
-                                <p className="error-message">{errors.content?.message}</p>
+                                <label>Categoria</label>
+                                <input type="text" name="categoryId" {...register('categoryId')} />
+                                <p className="error-message">{errors.categoryId?.message}</p>
+                            </div>
+
+                            <div className="fields">
+                                <label>Imagens (separadas por vírgulas)</label>
+                                <input type="text" name="images" {...register('images')} />
+                                <p className="error-message">{errors.images?.message}</p>
                             </div>
 
                             <div className="btn-post">
-                                <input type="submit"/>
+                                <input type="submit" />
                             </div>
                         </form>
                     </div>
                 </div>
             </main>
         </div>
-        
-    )
+    );
 }
 
 export default Produtos;
