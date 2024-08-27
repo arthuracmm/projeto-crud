@@ -12,7 +12,7 @@ function HeaderMain(){
                     </Link>
                 </div>
 
-                <div className="btns">
+                <div className="headerBtns">
 
                     <Link to = '/' className="link">
                         <p>Home</p>

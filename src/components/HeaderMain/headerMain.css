@@ -19,19 +19,19 @@ header{
     box-sizing: border-box;
 }
 
-.btns {
+.headerBtns {
     display: flex;
     gap: 3rem;
 }
 
-.btns > .link {
+.headerBtns > .link {
     box-sizing: border-box;
     border-radius: 5px;
     padding: 10px;
     transition: 0.3s ease-in-out;
 }
 
-.btns > .link:hover{
+.headerBtns > .link:hover{
     transition: 0.3s ease-in-out;
     background-color: rgb(195, 202, 202);
 }
