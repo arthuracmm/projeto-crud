@@ -26,6 +26,10 @@ function HeaderMain(){
                         <p>Sobre</p>
                     </Link>
 
+                    <Link to = '/postprodutos' className="link">
+                        <p>Postar</p>
+                    </Link>
+
                 </div>
             </div>
         </header>

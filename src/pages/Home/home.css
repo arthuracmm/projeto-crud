@@ -9,22 +9,22 @@
     justify-content: center;
     flex-direction: column;
     padding: 2rem;
-    gap: 5px;
+    gap: 10px;
     border-radius: 15px;
     align-items: center;
-    background-color: rgb(206, 206, 206);
+    background-color: #293827;
     max-width: 500px;
 }
 
 .homeHeader { 
-    background-color: rgb(206, 206, 206);
+    background-color: #293827;
 }
 
 .line{
     display: flex;
     width: 90%;
     height: 1px;
-    background-color: #393939;
+    background-color: #c1f0ba;
 }
 
 .btns{
@@ -34,5 +34,14 @@
 }
 
 .btn{
-    padding: 5px;
+    padding: 10px;
+    background-color: #293827;
+    border: 1px solid #c1f0ba;
+    border-radius: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+.btn:hover{
+    background-color: #3b5038;
+    cursor: pointer;
 }
