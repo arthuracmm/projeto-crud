@@ -1,19 +1,31 @@
 .cards{
     display: flex;
+    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     margin-top: 2rem;
 }
 
 .card {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    justify-content: center;
     padding: 2rem;
     gap: 10px;
     border-radius: 15px;
     align-items: center;
     background-color: #293827;
     max-width: 500px;
+}
+
+.right-cards{
+    display: flex;
+    justify-content: center;
+}
+
+.left-card img{
+    height: 400px;
+    width: 400px;
 }
 
 .homeHeader { 
@@ -29,8 +41,8 @@
 
 .btns{
     display: flex;
-    width: 90%;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
 .btn{

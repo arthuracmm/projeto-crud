@@ -1,44 +1,72 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import HeaderMain from '../../components/HeaderMain/headerMain'
 import { Link } from "react-router-dom";
 import './home.css'
+import axios from "axios";
 
 function Home(){
+
+    const[posts, setPosts] = useState([])
+
+    useEffect(() =>{
+        axios.get('https://api.escuelajs.co/api/v1/products')
+        .then((response) =>{
+            setPosts(response.data)
+        })
+        .catch(() =>{
+            console.log('deu errado')
+        })
+    }, [])
+
     return(
         <div>
             <HeaderMain />
             <main>
                 <div className="cards">
-                    <div className="card">
-                        <header className="homeHeader">
-                            <h2>Consumindo API</h2>
-                        </header>
-                        <div className="line"></div>
+                    
+                    {posts.map((post, key)=> {
+                        return (
+                            <div className="card">
 
-                        <p>Teste com texto aqui para ver como fica e etc.</p>
+                                <div className="left-card">
+                                    <img src={post.images[0]}/>
+                                </div>
 
-                        <div className="btns">
+                                <div className="right-card">
+                                    <header className="homeHeader">
+                                        <h2>{post.title}</h2>
+                                    </header>
+                                    <div className="line"></div>
 
-                            <div className="btnEdit">
-                                <Link to = '/edit'>
-                                <button className="btn">Editar</button>
-                                </Link>
+                                    <p>{post.description}</p>
+
+                                    <div className="btns">
+
+                                        <div className="btnEdit">
+                                            <Link to = '/edit'>
+                                            <button className="btn">Editar</button>
+                                            </Link>
+                                        </div>
+
+                                        <div className="btnVer">
+                                            <Link to = '/sobre'>
+                                            <button className="btn">Ver Mais</button>
+                                            </Link>
+                                        </div>
+
+                                        <div className="btnDelete">
+                                            <Link to = '/delete'>
+                                            <button className="btn">Deletar</button>
+                                            </Link>
+                                        </div>
+                                
+                                    </div>
+                                </div>
                             </div>
-
-                            <div className="btnVer">
-                                <Link to = '/sobre'>
-                                <button className="btn">Ver Mais</button>
-                                </Link>
-                            </div>
-
-                            <div className="btnDelete">
-                                <Link to = '/delete'>
-                                <button className="btn">Deletar</button>
-                                </Link>
-                            </div>
-                            
-                        </div>
-                    </div>
+                        )
+                    })}
+                    
+                    
                     
                 </div>
             </main>
