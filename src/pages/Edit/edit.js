@@ -1,9 +1,10 @@
 import React from "react";
+import HeaderMain from '../../components/HeaderMain/headerMain'
 
 function Edit(){
     return(
         <div>
-            <h1>Edit Page</h1>
+            <HeaderMain />
         </div>
     )
 }
