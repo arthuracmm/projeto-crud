@@ -9,6 +9,7 @@ function Home(){
     const[posts, setPosts] = useState([])
 
     useEffect(() =>{
+        // puxando Api para o 
         axios.get('https://api.escuelajs.co/api/v1/products')
         .then((response) =>{
             setPosts(response.data)
@@ -43,7 +44,7 @@ function Home(){
                                     <div className="btns">
 
                                         <div className="btnEdit">
-                                            <Link to = '/edit'>
+                                            <Link to = {{pathname:`/edit/${post.id}`}}>
                                             <button className="btn">Editar</button>
                                             </Link>
                                         </div>

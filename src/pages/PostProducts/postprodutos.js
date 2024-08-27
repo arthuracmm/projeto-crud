@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
 import './postprodutos.css';
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
 
 // Atualize a validação para aceitar um array de URLs
 const validacaoPost = yup.object().shape({
@@ -15,6 +16,9 @@ const validacaoPost = yup.object().shape({
 });
 
 function Produtos() {
+
+    let navigate = useNavigate()
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(validacaoPost)
     });
@@ -27,6 +31,7 @@ function Produtos() {
             };
             await axios.post('https://api.escuelajs.co/api/v1/products/', formattedData);
             console.log('Produto adicionado com sucesso');
+            navigate.push('/')
         } catch (error) {
             console.error('Erro ao adicionar produto', error.response?.data || error.message);
         }
