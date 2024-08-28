@@ -1,5 +1,4 @@
 main {
-    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -85,3 +84,48 @@ main {
 .error-message {
     color: rgb(240, 47, 47);
 }
+
+@media only screen and (max-width: 844px) {
+    
+    .fields > input{
+        width: 500px;
+    }
+
+    .card-post{
+        width: 600px;
+    }
+    .line-post{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    
+    .fields > input{
+        width: 400px;
+    }
+
+    .card-post{
+        width: 500px;
+    }
+    .line-post{
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 505px) {
+    
+    .fields > input{
+        width: 300px;
+    }
+
+    .card-post{
+        width: 400px;
+    }
+    .line-post{
+        width: 90%;
+    }
+}
+
+
+
