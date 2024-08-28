@@ -2,6 +2,9 @@
 
 Este projeto foi desenvolvido por Arthur Marcelino como parte de um teste para a vaga de front-end júnior. Utiliza React para criar uma aplicação web dinâmica e responsiva que interage com uma API, permitindo realizar operações CRUD, além de filtrar produtos por valor e ordenar alfabeticamente.
 
+# Projeto Hospedado
+https://lojaecommerceacmproject-ex4jpbih0-arthuracms-projects.vercel.app/
+
 ## Funcionalidades
 
 - **CRUD Completo**: Criação, leitura, atualização e exclusão de produtos.
