@@ -32,7 +32,7 @@ function Produtos() {
             };
             await axios.post('https://api.escuelajs.co/api/v1/products/', formattedData);
             console.log('Produto adicionado com sucesso');
-            navigate.push('/')
+            navigate('/')
         } catch (error) {
             console.error('Erro ao adicionar produto', error.response?.data || error.message);
         }
