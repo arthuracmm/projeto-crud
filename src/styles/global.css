@@ -16,4 +16,5 @@
 body{
     width: 100%;
     background-color: #141a13;
+    justify-content: center;
 }
