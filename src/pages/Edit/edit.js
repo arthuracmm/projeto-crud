@@ -36,7 +36,6 @@ function Edit(){
     
     const addProduto = async (data) => {
         try {
-            const imagesArray = String(data.images).split(',').map(url => url.trim());
 
             const DataFormatada = {
                 ...data,
