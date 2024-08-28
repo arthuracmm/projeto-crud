@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HeaderMain from '../../components/HeaderMain/headerMain'
+import FooterMain from '../../components/Footer/footerMain'
 import { Link } from "react-router-dom";
 import './produtos.css'
 import axios from "axios";
@@ -150,6 +151,7 @@ function Produtos(){
                         </button>
                     ))}
             </div>
+            <FooterMain />
         </div>
     )
 }

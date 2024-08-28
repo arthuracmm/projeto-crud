@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderMain from '../../components/HeaderMain/headerMain'
+import FooterMain from '../../components/Footer/footerMain'
 import './sobre.css'
 
 function Sobre(){
@@ -17,6 +18,7 @@ function Sobre(){
                     
                 </div>
             </main>
+            <FooterMain />
         </div>
     )
 }

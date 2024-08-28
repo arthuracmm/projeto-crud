@@ -1,5 +1,6 @@
 import React from "react";
 import HeaderMain from '../../components/HeaderMain/headerMain';
+import FooterMain from '../../components/Footer/footerMain'
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
@@ -86,6 +87,7 @@ function Produtos() {
                     </div>
                 </div>
             </main>
+            <FooterMain />
         </div>
     );
 }
